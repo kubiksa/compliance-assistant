@@ -128,9 +128,12 @@ function build() {
   const styles = fs.readFileSync(stylesPath, 'utf8');
   const app = fs.readFileSync(appPath, 'utf8');
 
+  const dataStatement =
+  'window.COMPLIANCE_DATA = ' + JSON.stringify(data, null, 2) + ';';
+
   const output = template
     .replace('/* __STYLES_PLACEHOLDER__ */', styles)
-    .replace('/* __DATA_PLACEHOLDER__ */', JSON.stringify(data, null, 2))
+    .replace('/* __DATA_PLACEHOLDER__ */', dataStatement)
     .replace('/* __APP_PLACEHOLDER__ */', app);
 
   const outputDir = path.dirname(outputPath);
