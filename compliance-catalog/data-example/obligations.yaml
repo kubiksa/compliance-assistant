@@ -1,0 +1,78 @@
+# Specific controls or requirements. Each obligation links to one regulation
+# and names one accountable role under the governance model.
+
+obligations:
+  - id: nist-171-03-01-01
+    regulation_id: nist-800-171-r3
+    control_id: 03.01.01
+    title: Account management
+    description: >
+      Define the types of system accounts allowed and specifically prohibited.
+      Create, enable, modify, disable, and remove system accounts in accordance
+      with policy, procedures, prerequisites, and criteria.
+    accountable_role: security_officer
+
+  - id: nist-171-03-01-05
+    regulation_id: nist-800-171-r3
+    control_id: 03.01.05
+    title: Least privilege
+    description: >
+      Employ the principle of least privilege, allowing only authorized accesses
+      for users and processes acting on behalf of users, that are necessary to
+      accomplish assigned organizational tasks.
+    accountable_role: security_officer
+
+  - id: nist-171-03-04-01
+    regulation_id: nist-800-171-r3
+    control_id: 03.04.01
+    title: Baseline configuration
+    description: >
+      Establish, document, and maintain baseline configurations of the system
+      and its components under configuration control.
+    accountable_role: system_owner
+
+  - id: nist-171-03-08-01
+    regulation_id: nist-800-171-r3
+    control_id: 03.08.01
+    title: Media storage
+    description: >
+      Protect (physically control and securely store) system media containing
+      CUI, both digital and non-digital.
+    accountable_role: security_officer
+
+  - id: nist-171-03-13-01
+    regulation_id: nist-800-171-r3
+    control_id: 03.13.01
+    title: Boundary protection
+    description: >
+      Monitor and control communications at the external and key internal
+      boundaries of the system.
+    accountable_role: system_owner
+
+  - id: cmmc-l2-ac-l2-3-1-1
+    regulation_id: cmmc-l2
+    control_id: AC.L2-3.1.1
+    title: Authorized access control
+    description: >
+      Limit system access to authorized users, processes acting on behalf of
+      authorized users, and devices (including other systems).
+    accountable_role: security_officer
+
+  - id: iso-a-8-9
+    regulation_id: iso27001-2022
+    control_id: A.8.9
+    title: Configuration management
+    description: >
+      Configurations of hardware, software, services and networks shall be
+      established, documented, implemented, monitored and reviewed.
+    accountable_role: system_owner
+
+  - id: iso-a-5-15
+    regulation_id: iso27001-2022
+    control_id: A.5.15
+    title: Access control
+    description: >
+      Rules to control physical and logical access to information and other
+      associated assets shall be established and implemented based on business
+      and information security requirements.
+    accountable_role: security_officer

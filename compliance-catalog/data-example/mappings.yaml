@@ -1,0 +1,108 @@
+# Connective tissue. Each mapping links one obligation to the documents that
+# satisfy it across the four-layer model, and declares the current verification
+# status.
+#
+# status is one of:
+#   verified              - obligation is fully satisfied and evidence exists
+#   deviations_noted      - obligation is partially satisfied; gaps documented
+#   verification_pending  - verification cannot be completed (access blocked,
+#                           document not filed, or awaiting other work)
+
+mappings:
+  - obligation_id: nist-171-03-01-01
+    documents:
+      - document_id: POL-AC-001
+        layer: requirement
+      - document_id: DES-IAM-001
+        layer: design
+      - document_id: SPEC-IAM-001
+        layer: specification
+      - document_id: ART-IAM-001
+        layer: verification
+    status: verified
+    notes: >
+      Account management fully implemented via Entra ID with lifecycle
+      automation. Verification evidence in ART-IAM-001.
+
+  - obligation_id: nist-171-03-01-05
+    documents:
+      - document_id: POL-AC-001
+        layer: requirement
+      - document_id: DES-IAM-001
+        layer: design
+      - document_id: SPEC-IAM-001
+        layer: specification
+    status: deviations_noted
+    notes: >
+      PIM implementation covers privileged roles. Standard user least-privilege
+      review scheduled quarterly, last review 2026-01-15. Verification artifact
+      pending completion of the current review cycle.
+
+  - obligation_id: nist-171-03-04-01
+    documents:
+      - document_id: POL-CM-001
+        layer: requirement
+      - document_id: DES-CFG-001
+        layer: design
+      - document_id: ART-CFG-001
+        layer: verification
+    status: verified
+    notes: >
+      Terraform-based IaC provides declarative baseline configurations. All
+      changes tracked in Azure DevOps with mandatory pull request review.
+
+  - obligation_id: nist-171-03-08-01
+    documents:
+      - document_id: POL-MP-001
+        layer: requirement
+    status: verification_pending
+    notes: >
+      Policy filed. Design and implementation verification pending completion
+      of DLZ storage architecture and access to production storage accounts.
+
+  - obligation_id: nist-171-03-13-01
+    documents:
+      - document_id: DES-NET-001
+        layer: design
+      - document_id: SPEC-NET-001
+        layer: specification
+    status: deviations_noted
+    notes: >
+      Boundary protection design and firewall rule specification filed.
+      Requirement-layer policy not yet created. Deviation logged for policy
+      backfill in next quarterly cycle.
+
+  - obligation_id: cmmc-l2-ac-l2-3-1-1
+    documents:
+      - document_id: POL-AC-001
+        layer: requirement
+      - document_id: DES-IAM-001
+        layer: design
+      - document_id: ART-IAM-001
+        layer: verification
+    status: verified
+    notes: >
+      Directly satisfied by the same evidence chain as NIST SP 800-171
+      control 03.01.01. Cross-mapped.
+
+  - obligation_id: iso-a-8-9
+    documents:
+      - document_id: POL-CM-001
+        layer: requirement
+      - document_id: DES-CFG-001
+        layer: design
+      - document_id: ART-CFG-001
+        layer: verification
+    status: verified
+    notes: >
+      Cross-mapped with NIST SP 800-171 control 03.04.01. Same evidence chain.
+
+  - obligation_id: iso-a-5-15
+    documents:
+      - document_id: POL-AC-001
+        layer: requirement
+      - document_id: DES-IAM-001
+        layer: design
+    status: verified
+    notes: >
+      Cross-mapped with NIST SP 800-171 controls 03.01.01 and 03.01.05.

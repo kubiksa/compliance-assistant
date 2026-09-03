@@ -1,0 +1,29 @@
+# Regulations, standards, or frameworks the catalog tracks.
+#
+# obligation_type is one of:
+#   compliant_with  - for mandatory regulations (laws, statutes)
+#   certified_to    - for voluntary standards (ISO, SOC 2, CMMC)
+#   aligned_with    - for frameworks (NIST CSF)
+#   implements      - for guidance documents (NIST SP 800 series)
+
+regulations:
+  - id: nist-800-171-r3
+    name: NIST SP 800-171 Rev 3
+    full_title: Protecting Controlled Unclassified Information in Nonfederal Systems and Organizations
+    jurisdiction: us_federal
+    obligation_type: implements
+    reg_document: REG-EXAMPLE-001
+
+  - id: cmmc-l2
+    name: CMMC Level 2
+    full_title: Cybersecurity Maturity Model Certification, Level 2
+    jurisdiction: us_federal
+    obligation_type: certified_to
+    reg_document: REG-EXAMPLE-002
+
+  - id: iso27001-2022
+    name: ISO 27001:2022
+    full_title: Information Security Management Systems - Requirements
+    jurisdiction: international
+    obligation_type: certified_to
+    reg_document: REG-EXAMPLE-003

@@ -1,0 +1,85 @@
+# Document registry. Every document referenced by any mapping must appear here.
+#
+# layer is one of: requirement, design, specification, verification
+#
+# URLs are optional. Each document can carry:
+#   projectwise_url      - native protocol URL (pw://) for ProjectWise Explorer
+#   projectwise_web_url  - HTTPS URL for browser-based access
+#
+# If both are present, the catalog renders an "Open" button and a "Web" button.
+# If neither is present, the catalog renders a "Not filed" indicator.
+
+documents:
+  # Requirement layer
+  - id: POL-AC-001
+    title: Access Control Policy
+    layer: requirement
+    revision: Rev 2
+    date_filed: 2025-11-15
+    projectwise_url: https://example.com/docs/POL-AC-001
+
+  - id: POL-CM-001
+    title: Configuration Management Policy
+    layer: requirement
+    revision: Rev 1
+    date_filed: 2025-10-01
+    projectwise_url: https://example.com/docs/POL-CM-001
+
+  - id: POL-MP-001
+    title: Media Protection Policy
+    layer: requirement
+    revision: Rev 1
+    date_filed: 2025-09-20
+    projectwise_url: https://example.com/docs/POL-MP-001
+
+  # Design layer
+  - id: DES-IAM-001
+    title: Identity and Access Management Design
+    layer: design
+    revision: Rev 1
+    date_filed: 2026-01-10
+    projectwise_url: https://example.com/docs/DES-IAM-001
+
+  - id: DES-NET-001
+    title: Network Boundary Architecture
+    layer: design
+    revision: Rev 1
+    date_filed: 2026-01-20
+    projectwise_url: https://example.com/docs/DES-NET-001
+
+  - id: DES-CFG-001
+    title: Configuration Management Architecture
+    layer: design
+    revision: Rev 1
+    date_filed: 2026-01-25
+    projectwise_url: https://example.com/docs/DES-CFG-001
+
+  # Specification layer
+  - id: SPEC-IAM-001
+    title: IAM Implementation Specification
+    layer: specification
+    revision: Rev 1
+    date_filed: 2026-02-01
+    projectwise_url: https://example.com/docs/SPEC-IAM-001
+
+  - id: SPEC-NET-001
+    title: Firewall Rule Specification
+    layer: specification
+    revision: Rev 1
+    date_filed: 2026-02-05
+    projectwise_url: https://example.com/docs/SPEC-NET-001
+
+  # Verification layer
+  - id: ART-IAM-001
+    title: IAM Configuration Verification Evidence
+    layer: verification
+    revision: Rev 1
+    date_filed: 2026-02-15
+    projectwise_url: https://example.com/docs/ART-IAM-001
+
+  - id: ART-CFG-001
+    title: Baseline Configuration Verification
+    layer: verification
+    revision: Rev 1
+    date_filed: 2026-02-20
+    projectwise_url: https://example.com/docs/ART-CFG-001

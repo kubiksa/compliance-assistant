@@ -1,0 +1,10 @@
+node_modules/
+dist/
+data/*
+!data/README.md
+!data/.gitkeep
+*.log
+.DS_Store
+.env
+.vscode/
+.idea/
