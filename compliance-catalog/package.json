@@ -1,28 +1,14 @@
 {
   "name": "compliance-catalog",
-  "version": "0.1.0",
-  "description": "Static HTML compliance catalog generator with drill-down traceability from regulation to implementation.",
+  "version": "0.2.0",
+  "description": "Static, single-file HTML compliance catalog generated from YAML data",
   "main": "build.js",
   "scripts": {
-    "build": "node build.js",
-    "build:example": "node build.js --data data-example --output dist/compliance-catalog-example.html"
+    "build": "node build.js --data data",
+    "build:example": "node build.js --data data-example"
   },
-  "keywords": [
-    "compliance",
-    "iso27001",
-    "soc2",
-    "nist",
-    "cmmc",
-    "audit",
-    "governance",
-    "projectwise"
-  ],
-  "author": "",
   "license": "MIT",
   "dependencies": {
     "js-yaml": "^4.1.0"
-  },
-  "engines": {
-    "node": ">=18"
   }
 }

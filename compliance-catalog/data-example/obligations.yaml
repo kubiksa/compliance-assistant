@@ -1,78 +1,396 @@
-# Specific controls or requirements. Each obligation links to one regulation
-# and names one accountable role under the governance model.
+# Individual requirements. Each belongs to one regulation.
+#
+# control_id        the official identifier in the source
+# text              the requirement's wording; set official_wording: false when it is a summary
+# common_control    id from controls.yaml (puts it on the shared controls view and a topic page)
+# topics            use instead of common_control for requirements with no shared control
+# plain_title, plain_summary   optional beginner-friendly wording for standalone requirements
+# family            grouping on the regulation page
 
 obligations:
-  - id: nist-171-03-01-01
-    regulation_id: nist-800-171-r3
-    control_id: 03.01.01
-    title: Account management
-    description: >
-      Define the types of system accounts allowed and specifically prohibited.
-      Create, enable, modify, disable, and remove system accounts in accordance
-      with policy, procedures, prerequisites, and criteria.
-    accountable_role: security_officer
+  # ---------------- SOC 2 ----------------
+  - id: soc2-cc1-2
+    regulation_id: soc2
+    control_id: CC1.2
+    family: CC1 Control environment
+    title: Board oversight
+    text: The board of directors is independent of management and oversees internal control.
+    official_wording: false
+    common_control: leadership
+    accountable_role: general_counsel
+  - id: soc2-cc3-2
+    regulation_id: soc2
+    control_id: CC3.2
+    family: CC3 Risk assessment
+    title: Risk identification and analysis
+    text: Risks to achieving objectives are identified and analyzed to decide how they should be managed.
+    official_wording: false
+    common_control: risk-management
+    accountable_role: ciso
+  - id: soc2-cc6-1
+    regulation_id: soc2
+    control_id: CC6.1
+    family: CC6 Logical and physical access
+    title: Logical access security
+    text: Access security software, infrastructure, and architecture protect information assets, including identifying and authenticating users.
+    official_wording: false
+    common_control: authentication
+    accountable_role: it_ops
+  - id: soc2-cc6-2
+    regulation_id: soc2
+    control_id: CC6.2
+    family: CC6 Logical and physical access
+    title: User registration and removal
+    text: New users are registered and authorized before credentials are issued, and credentials are removed when access is no longer needed.
+    official_wording: false
+    common_control: access-lifecycle
+    accountable_role: it_ops
+  - id: soc2-cc6-3
+    regulation_id: soc2
+    control_id: CC6.3
+    family: CC6 Logical and physical access
+    title: Role-based access
+    text: Access to data, software, and systems is authorized, changed, or removed based on roles, applying least privilege and segregation of duties.
+    official_wording: false
+    common_control: least-privilege
+    accountable_role: it_ops
+  - id: soc2-cc6-7
+    regulation_id: soc2
+    control_id: CC6.7
+    family: CC6 Logical and physical access
+    title: Protecting data in transmission
+    text: The movement of information is restricted to authorized parties and protected while in transit.
+    official_wording: false
+    common_control: encryption
+    accountable_role: it_ops
+  - id: soc2-cc7-2
+    regulation_id: soc2
+    control_id: CC7.2
+    family: CC7 System operations
+    title: Monitoring for anomalies
+    text: System components are monitored for anomalies that could indicate malicious acts, natural disasters, or errors.
+    official_wording: false
+    common_control: logging
+    accountable_role: it_ops
+  - id: soc2-cc7-4
+    regulation_id: soc2
+    control_id: CC7.4
+    family: CC7 System operations
+    title: Incident response
+    text: Identified security incidents are responded to through a defined incident response program.
+    official_wording: false
+    common_control: incident-response
+    accountable_role: ciso
+  - id: soc2-cc9-2
+    regulation_id: soc2
+    control_id: CC9.2
+    family: CC9 Risk mitigation
+    title: Vendor and partner risk
+    text: Risks from vendors and business partners are assessed and managed.
+    official_wording: false
+    common_control: vendor-risk
+    accountable_role: ciso
 
-  - id: nist-171-03-01-05
-    regulation_id: nist-800-171-r3
-    control_id: 03.01.05
-    title: Least privilege
-    description: >
-      Employ the principle of least privilege, allowing only authorized accesses
-      for users and processes acting on behalf of users, that are necessary to
-      accomplish assigned organizational tasks.
-    accountable_role: security_officer
+  # ---------------- ISO/IEC 27001:2022 ----------------
+  - id: iso-5-1
+    regulation_id: iso27001
+    control_id: "5.1"
+    family: Clause 5 Leadership
+    title: Leadership and commitment
+    text: Top management demonstrates leadership and commitment to the information security management system.
+    official_wording: false
+    common_control: leadership
+    accountable_role: ciso
+  - id: iso-6-1-2
+    regulation_id: iso27001
+    control_id: 6.1.2
+    family: Clause 6 Planning
+    title: Information security risk assessment
+    text: A repeatable information security risk assessment process is defined and applied.
+    official_wording: false
+    common_control: risk-management
+    accountable_role: ciso
+  - id: iso-a-5-18
+    regulation_id: iso27001
+    control_id: A.5.18
+    family: Annex A.5 Organizational controls
+    title: Access rights
+    text: Access rights are provided, reviewed, adjusted, and removed in line with the access control policy.
+    official_wording: false
+    common_control: access-lifecycle
+    accountable_role: it_ops
+  - id: iso-a-5-19
+    regulation_id: iso27001
+    control_id: A.5.19
+    family: Annex A.5 Organizational controls
+    title: Information security in supplier relationships
+    text: Processes are defined to manage security risks from the use of suppliers' products and services.
+    official_wording: false
+    common_control: vendor-risk
+    accountable_role: ciso
+  - id: iso-a-5-24
+    regulation_id: iso27001
+    control_id: A.5.24
+    family: Annex A.5 Organizational controls
+    title: Incident management planning and preparation
+    text: Roles, responsibilities, and processes for managing security incidents are defined and prepared in advance.
+    official_wording: false
+    common_control: incident-response
+    accountable_role: ciso
+  - id: iso-a-8-2
+    regulation_id: iso27001
+    control_id: A.8.2
+    family: Annex A.8 Technological controls
+    title: Privileged access rights
+    text: Privileged access rights are restricted and managed.
+    official_wording: false
+    common_control: least-privilege
+    accountable_role: it_ops
+  - id: iso-a-8-5
+    regulation_id: iso27001
+    control_id: A.8.5
+    family: Annex A.8 Technological controls
+    title: Secure authentication
+    text: Secure authentication methods are used, based on access restrictions and the access control policy.
+    official_wording: false
+    common_control: authentication
+    accountable_role: it_ops
+  - id: iso-a-8-10
+    regulation_id: iso27001
+    control_id: A.8.10
+    family: Annex A.8 Technological controls
+    title: Information deletion
+    text: Information is deleted when it is no longer required.
+    official_wording: false
+    common_control: retention
+    accountable_role: it_ops
+  - id: iso-a-8-15
+    regulation_id: iso27001
+    control_id: A.8.15
+    family: Annex A.8 Technological controls
+    title: Logging
+    text: Logs recording activities, exceptions, and faults are produced, stored, protected, and analyzed.
+    official_wording: false
+    common_control: logging
+    accountable_role: it_ops
+  - id: iso-a-8-24
+    regulation_id: iso27001
+    control_id: A.8.24
+    family: Annex A.8 Technological controls
+    title: Use of cryptography
+    text: Rules for the effective use of cryptography, including key management, are defined and followed.
+    official_wording: false
+    common_control: encryption
+    accountable_role: ciso
 
-  - id: nist-171-03-04-01
-    regulation_id: nist-800-171-r3
-    control_id: 03.04.01
-    title: Baseline configuration
-    description: >
-      Establish, document, and maintain baseline configurations of the system
-      and its components under configuration control.
-    accountable_role: system_owner
+  # ---------------- NIST CSF 2.0 ----------------
+  - id: csf-gv-rr-01
+    regulation_id: nist-csf
+    control_id: GV.RR-01
+    family: Govern (GV)
+    title: Leadership accountability
+    text: Leadership is responsible and accountable for cybersecurity risk and builds a risk-aware, ethical, continually improving culture.
+    official_wording: false
+    wording_note: Summary of the CSF subcategory. See the official source for the exact text.
+    common_control: leadership
+    accountable_role: ciso
+  - id: csf-gv-sc-07
+    regulation_id: nist-csf
+    control_id: GV.SC-07
+    family: Govern (GV)
+    title: Supplier risk throughout the relationship
+    text: Risks posed by suppliers and other third parties are understood, recorded, prioritized, assessed, responded to, and monitored over the course of the relationship.
+    official_wording: false
+    wording_note: Summary of the CSF subcategory. See the official source for the exact text.
+    common_control: vendor-risk
+    accountable_role: ciso
+  - id: csf-id-ra
+    regulation_id: nist-csf
+    control_id: ID.RA
+    family: Identify (ID)
+    title: Risk assessment
+    text: The organization understands the cybersecurity risk to its operations, assets, and people.
+    official_wording: false
+    wording_note: Summary of the CSF category. See the official source for the exact text.
+    common_control: risk-management
+    accountable_role: ciso
+  - id: csf-pr-aa-01
+    regulation_id: nist-csf
+    control_id: PR.AA-01
+    family: Protect (PR)
+    title: Identities and credentials are managed
+    text: Identities and credentials for authorized users, services, and hardware are managed by the organization.
+    common_control: access-lifecycle
+    accountable_role: it_ops
+  - id: csf-pr-aa-03
+    regulation_id: nist-csf
+    control_id: PR.AA-03
+    family: Protect (PR)
+    title: Authentication
+    text: Users, services, and hardware are authenticated.
+    common_control: authentication
+    accountable_role: it_ops
+  - id: csf-pr-aa-05
+    regulation_id: nist-csf
+    control_id: PR.AA-05
+    family: Protect (PR)
+    title: Access permissions and least privilege
+    text: Access permissions, entitlements, and authorizations are defined in a policy, managed, enforced, and reviewed, and incorporate the principles of least privilege and separation of duties.
+    common_control: least-privilege
+    accountable_role: it_ops
+  - id: csf-pr-ds-01
+    regulation_id: nist-csf
+    control_id: PR.DS-01
+    family: Protect (PR)
+    title: Data at rest is protected
+    text: The confidentiality, integrity, and availability of data-at-rest are protected.
+    common_control: encryption
+    accountable_role: it_ops
+  - id: csf-pr-ds-02
+    regulation_id: nist-csf
+    control_id: PR.DS-02
+    family: Protect (PR)
+    title: Data in transit is protected
+    text: The confidentiality, integrity, and availability of data-in-transit are protected.
+    common_control: encryption
+    accountable_role: it_ops
+  - id: csf-pr-ps-04
+    regulation_id: nist-csf
+    control_id: PR.PS-04
+    family: Protect (PR)
+    title: Log records
+    text: Log records are generated and made available for continuous monitoring.
+    common_control: logging
+    accountable_role: it_ops
+  - id: csf-rs-ma-01
+    regulation_id: nist-csf
+    control_id: RS.MA-01
+    family: Respond (RS)
+    title: Incident response plan is executed
+    text: The incident response plan is executed in coordination with relevant third parties once an incident is declared.
+    common_control: incident-response
+    accountable_role: ciso
 
-  - id: nist-171-03-08-01
-    regulation_id: nist-800-171-r3
-    control_id: 03.08.01
-    title: Media storage
-    description: >
-      Protect (physically control and securely store) system media containing
-      CUI, both digital and non-digital.
-    accountable_role: security_officer
+  # ---------------- GDPR ----------------
+  - id: gdpr-5-1-e
+    regulation_id: gdpr
+    control_id: Art. 5(1)(e)
+    family: Chapter II Principles
+    title: Storage limitation
+    text: "Personal data shall be... kept in a form which permits identification of data subjects for no longer than is necessary for the purposes for which the personal data are processed."
+    common_control: retention
+    accountable_role: dpo
+  - id: gdpr-5-1-f
+    regulation_id: gdpr
+    control_id: Art. 5(1)(f)
+    family: Chapter II Principles
+    title: Integrity and confidentiality
+    plain_title: Keep personal data secure
+    plain_summary: >
+      Personal data must be protected against unauthorized use, loss, and damage with suitable
+      technical and organizational measures.
+    text: "Personal data shall be... processed in a manner that ensures appropriate security of the personal data, including protection against unauthorised or unlawful processing and against accidental loss, destruction or damage, using appropriate technical or organisational measures."
+    topics: [data-protection]
+    accountable_role: dpo
+  - id: gdpr-15
+    regulation_id: gdpr
+    control_id: Art. 15
+    family: Chapter III Rights of the data subject
+    title: Right of access by the data subject
+    plain_title: Let people see the data we hold about them
+    plain_summary: >
+      When someone asks, we must confirm whether we hold personal data about them and give them
+      a copy, generally within one month.
+    text: "The data subject shall have the right to obtain from the controller confirmation as to whether or not personal data concerning him or her are being processed, and, where that is the case, access to the personal data..."
+    topics: [personal-info]
+    accountable_role: dpo
+  - id: gdpr-17
+    regulation_id: gdpr
+    control_id: Art. 17
+    family: Chapter III Rights of the data subject
+    title: Right to erasure
+    text: "The data subject shall have the right to obtain from the controller the erasure of personal data concerning him or her without undue delay..."
+    common_control: retention
+    accountable_role: dpo
+  - id: gdpr-28-1
+    regulation_id: gdpr
+    control_id: Art. 28(1)
+    family: Chapter IV Controller and processor
+    title: Using processors
+    text: "Where processing is to be carried out on behalf of a controller, the controller shall use only processors providing sufficient guarantees to implement appropriate technical and organisational measures in such a manner that processing will meet the requirements of this Regulation and ensure the protection of the rights of the data subject."
+    common_control: vendor-risk
+    accountable_role: dpo
+  - id: gdpr-30
+    regulation_id: gdpr
+    control_id: Art. 30(1)
+    family: Chapter IV Controller and processor
+    title: Records of processing activities
+    plain_title: Keep a record of how we use personal data
+    plain_summary: >
+      We must keep an up-to-date list of the personal data we process, why, who it is shared
+      with, and how long it is kept.
+    text: "Each controller and, where applicable, the controller's representative, shall maintain a record of processing activities under its responsibility."
+    topics: [personal-info]
+    accountable_role: dpo
+  - id: gdpr-32-1-a
+    regulation_id: gdpr
+    control_id: Art. 32(1)(a)
+    family: Chapter IV Controller and processor
+    title: Security of processing, encryption
+    text: "...the controller and the processor shall implement appropriate technical and organisational measures to ensure a level of security appropriate to the risk, including inter alia as appropriate: (a) the pseudonymisation and encryption of personal data;"
+    common_control: encryption
+    accountable_role: dpo
+  - id: gdpr-33-1
+    regulation_id: gdpr
+    control_id: Art. 33(1)
+    family: Chapter IV Controller and processor
+    title: Notifying the supervisory authority of a breach
+    text: "In the case of a personal data breach, the controller shall without undue delay and, where feasible, not later than 72 hours after having become aware of it, notify the personal data breach to the supervisory authority competent in accordance with Article 55, unless the personal data breach is unlikely to result in a risk to the rights and freedoms of natural persons."
+    common_control: breach-notification
+    accountable_role: dpo
+  - id: gdpr-34-1
+    regulation_id: gdpr
+    control_id: Art. 34(1)
+    family: Chapter IV Controller and processor
+    title: Communicating a breach to the people affected
+    text: "When the personal data breach is likely to result in a high risk to the rights and freedoms of natural persons, the controller shall communicate the personal data breach to the data subject without undue delay."
+    common_control: breach-notification
+    accountable_role: dpo
 
-  - id: nist-171-03-13-01
-    regulation_id: nist-800-171-r3
-    control_id: 03.13.01
-    title: Boundary protection
-    description: >
-      Monitor and control communications at the external and key internal
-      boundaries of the system.
-    accountable_role: system_owner
-
-  - id: cmmc-l2-ac-l2-3-1-1
-    regulation_id: cmmc-l2
-    control_id: AC.L2-3.1.1
-    title: Authorized access control
-    description: >
-      Limit system access to authorized users, processes acting on behalf of
-      authorized users, and devices (including other systems).
-    accountable_role: security_officer
-
-  - id: iso-a-8-9
-    regulation_id: iso27001-2022
-    control_id: A.8.9
-    title: Configuration management
-    description: >
-      Configurations of hardware, software, services and networks shall be
-      established, documented, implemented, monitored and reviewed.
-    accountable_role: system_owner
-
-  - id: iso-a-5-15
-    regulation_id: iso27001-2022
-    control_id: A.5.15
-    title: Access control
-    description: >
-      Rules to control physical and logical access to information and other
-      associated assets shall be established and implemented based on business
-      and information security requirements.
-    accountable_role: security_officer
+  # ---------------- SEC ----------------
+  - id: sec-8k-105
+    regulation_id: sec-cyber
+    control_id: Form 8-K Item 1.05
+    family: Incident disclosure
+    title: Disclose material cybersecurity incidents
+    text: Disclose a cybersecurity incident on Form 8-K within four business days after determining it is material, describing its nature, scope, timing, and material impact.
+    official_wording: false
+    common_control: breach-notification
+    accountable_role: general_counsel
+  - id: sec-materiality
+    regulation_id: sec-cyber
+    control_id: Form 8-K Item 1.05 (timing)
+    family: Incident disclosure
+    title: Decide materiality without unreasonable delay
+    text: Determine whether an incident is material without unreasonable delay after discovering it.
+    official_wording: false
+    common_control: breach-notification
+    accountable_role: general_counsel
+  - id: sec-106-b
+    regulation_id: sec-cyber
+    control_id: Reg. S-K Item 106(b)
+    family: Annual report disclosure
+    title: Describe risk management and strategy
+    text: Describe in the annual report the processes for assessing, identifying, and managing material risks from cybersecurity threats.
+    official_wording: false
+    common_control: risk-management
+    accountable_role: general_counsel
+  - id: sec-106-c
+    regulation_id: sec-cyber
+    control_id: Reg. S-K Item 106(c)
+    family: Annual report disclosure
+    title: Describe governance and board oversight
+    text: Describe in the annual report the board's oversight of cybersecurity risk and management's role in assessing and managing it.
+    official_wording: false
+    common_control: leadership
+    accountable_role: general_counsel

@@ -1,0 +1,97 @@
+# Catalog-wide settings: titles, wording, layers, applicability questions, and filters.
+# Everything readers see that is not about a specific regulation lives here.
+
+title: Compliance Catalog
+organization: Northfield Systems, Inc. (fictional example company)
+version: example-1
+as_of: 2026-09-01
+sample_notice: Example data for a fictional company
+
+scope_notice: >
+  This catalog shows whether each requirement is addressed in company policies,
+  standards, and procedures. It does not test whether those controls work in practice.
+
+home_heading: Find the requirements that apply to your work
+home_intro: >
+  Start from a plain-language topic or a regulation you already know. Every requirement
+  links to the company documents that address it.
+search_placeholder: Try "access", "breach", "vendor", or a document ID
+reg_doc_label: plain-language summary
+footer_note: >
+  Example dataset for the open source compliance-catalog tool. Northfield Systems is fictional.
+
+# Default review interval for mappings and documents without their own.
+review_interval_days: 365
+
+# The document layers used in traceability. Rename them to match how your
+# organization organizes documents. empty_text is shown when a requirement has
+# nothing mapped at that layer.
+layers:
+  - id: policy
+    name: Policy
+    description: What the company commits to, approved by leadership
+    empty_text: No policy mapped
+  - id: standard
+    name: Standard
+    description: Specific rules that make a policy measurable
+    empty_text: No standard mapped
+  - id: procedure
+    name: Procedure
+    description: Step-by-step instructions people follow
+    empty_text: No procedure mapped
+  - id: evidence
+    name: Evidence
+    description: Records showing the procedure was carried out
+    empty_text: No evidence recorded yet
+
+# Optional: rename the four documentation statuses.
+status_labels:
+  addressed: Addressed in documentation
+  partially_addressed: Partially addressed
+  not_addressed: Not addressed
+  not_assessed: Not yet assessed
+
+# Checkboxes on the home page. Regulations list the ids they apply to in applies_if.
+applicability_prompt: Check everything that applies to your organization
+applicability:
+  - id: eu_personal_data
+    label: We collect or use personal data about people in the EU
+    short: EU personal data
+    help: Customers, website visitors, or employees located in the EU or EEA.
+  - id: us_public
+    label: We are a publicly traded company in the US
+    short: US public company
+    help: Our shares are registered with the SEC.
+  - id: customer_assurance
+    label: Customers ask us for a SOC 2 report
+    short: Customers ask for SOC 2
+    help: Common for companies that host or process data on behalf of customers.
+  - id: certification
+    label: We hold or want ISO 27001 certification
+    short: ISO 27001 certification
+    help: Often required by international customers or in public tenders.
+
+# Filters shown on the regulation library, in addition to Type, Timing, and
+# documentation status, which are built in. in_table adds a column to the list.
+group_field: category
+facets:
+  - field: category
+    label: Category
+    values:
+      security_framework: Security frameworks and certifications
+      privacy: Privacy law
+      securities: Securities disclosure
+  - field: jurisdiction
+    label: Where it applies
+    in_table: true
+    values:
+      us: United States
+      eu: European Union
+      international: International
+  - field: scope
+    label: What it covers
+    in_table: true
+    values:
+      data: How specific data is handled
+      program: How the security program is run
+      both: Both

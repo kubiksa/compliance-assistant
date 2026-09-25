@@ -1,0 +1,32 @@
+# Plain definitions. Terms (and aliases) are underlined with a hover definition
+# wherever they appear in summaries.
+glossary:
+  - term: Personal data
+    definition: Any information about an identifiable person, such as a name, email address, location, or account ID.
+  - term: Controller
+    definition: Under GDPR, the organization that decides why and how personal data is used.
+  - term: Processor
+    aliases: [processors]
+    definition: Under GDPR, an organization that handles personal data on behalf of a controller, such as a cloud or payroll provider.
+  - term: Supervisory authority
+    definition: The government body in an EU country that enforces GDPR, such as a national data protection authority.
+  - term: Material
+    definition: Important enough that a reasonable investor would want to know about it. The SEC rule uses this test to decide which incidents must be disclosed.
+  - term: Form 8-K
+    definition: A report US public companies file with the SEC to announce significant events between regular reports.
+  - term: MFA
+    definition: Multi-factor authentication. Logging in with something you know, such as a password, plus something you have, such as a phone.
+  - term: Least privilege
+    definition: Giving each person or program only the access it needs to do its job, and nothing more.
+  - term: Encryption
+    definition: Scrambling data so only someone with the right key can read it.
+  - term: Incident
+    definition: An event that threatens the security of systems or data, whether or not any harm results.
+  - term: Breach
+    definition: An incident where data is actually lost, stolen, changed, or exposed without permission.
+  - term: Attestation
+    definition: An independent auditor's formal opinion on whether controls are designed and operating as described. A SOC 2 report is an attestation.
+  - term: Annex A
+    definition: The list of 93 security controls at the back of ISO/IEC 27001, grouped into organizational, people, physical, and technological controls.
+  - term: Framework
+    definition: A structured set of recommended practices. Frameworks like the NIST CSF are usually voluntary.

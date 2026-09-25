@@ -1,85 +1,159 @@
-# Document registry. Every document referenced by any mapping must appear here.
+# Documents the catalog links to. url can be any link your readers can open:
+# https:// for web systems, pw:// for ProjectWise Explorer, file paths, and so on.
 #
-# layer is one of: requirement, design, specification, verification
-#
-# URLs are optional. Each document can carry:
-#   projectwise_url      - native protocol URL (pw://) for ProjectWise Explorer
-#   projectwise_web_url  - HTTPS URL for browser-based access
-#
-# If both are present, the catalog renders an "Open" button and a "Web" button.
-# If neither is present, the catalog renders a "Not filed" indicator.
+# layer       id from catalog.yaml layers (omit only for doc_type: reference)
+# restricted  true if most readers cannot open it
+# status_note shown instead of a link for documents that are not filed yet
 
 documents:
-  # Requirement layer
-  - id: POL-AC-001
-    title: Access Control Policy
-    layer: requirement
-    revision: Rev 2
-    date_filed: 2025-11-15
-    projectwise_url: https://example.com/docs/POL-AC-001
+  # Reference summaries, one per regulation
+  - id: REF-SOC2
+    title: SOC 2 in plain language
+    doc_type: reference
+    url: https://docs.example.com/compliance/reference/soc2
+  - id: REF-ISO27001
+    title: ISO/IEC 27001 in plain language
+    doc_type: reference
+    url: https://docs.example.com/compliance/reference/iso27001
+  - id: REF-CSF
+    title: NIST CSF 2.0 in plain language
+    doc_type: reference
+    url: https://docs.example.com/compliance/reference/nist-csf
+  - id: REF-GDPR
+    title: GDPR in plain language
+    doc_type: reference
+    url: https://docs.example.com/compliance/reference/gdpr
+  - id: REF-SEC
+    title: SEC cybersecurity disclosure rule in plain language
+    doc_type: reference
+    url: https://docs.example.com/compliance/reference/sec-cyber
 
-  - id: POL-CM-001
-    title: Configuration Management Policy
-    layer: requirement
-    revision: Rev 1
-    date_filed: 2025-10-01
-    projectwise_url: https://example.com/docs/POL-CM-001
-
-  - id: POL-MP-001
-    title: Media Protection Policy
-    layer: requirement
-    revision: Rev 1
-    date_filed: 2025-09-20
-    projectwise_url: https://example.com/docs/POL-MP-001
-
-  # Design layer
-  - id: DES-IAM-001
-    title: Identity and Access Management Design
-    layer: design
-    revision: Rev 1
-    date_filed: 2026-01-10
-    projectwise_url: https://example.com/docs/DES-IAM-001
-
-  - id: DES-NET-001
-    title: Network Boundary Architecture
-    layer: design
-    revision: Rev 1
+  # Policies
+  - id: POL-001
+    title: Information Security Policy
+    layer: policy
+    doc_type: Policy
+    revision: Rev 3
     date_filed: 2026-01-20
-    projectwise_url: https://example.com/docs/DES-NET-001
-
-  - id: DES-CFG-001
-    title: Configuration Management Architecture
-    layer: design
+    last_reviewed: 2026-01-20
+    url: https://docs.example.com/policies/POL-001
+  - id: POL-002
+    title: Access Control Policy
+    layer: policy
+    doc_type: Policy
+    revision: Rev 2
+    date_filed: 2025-11-04
+    last_reviewed: 2025-11-04
+    url: https://docs.example.com/policies/POL-002
+  - id: POL-003
+    title: Data Protection Policy
+    layer: policy
+    doc_type: Policy
+    revision: Rev 2
+    date_filed: 2026-02-12
+    last_reviewed: 2026-02-12
+    url: https://docs.example.com/policies/POL-003
+  - id: POL-004
+    title: Data Retention and Deletion Policy
+    layer: policy
+    doc_type: Policy
     revision: Rev 1
-    date_filed: 2026-01-25
-    projectwise_url: https://example.com/docs/DES-CFG-001
-
-  # Specification layer
-  - id: SPEC-IAM-001
-    title: IAM Implementation Specification
-    layer: specification
+    date_filed: 2025-04-30
+    last_reviewed: 2025-04-30
+    url: https://docs.example.com/policies/POL-004
+  - id: POL-005
+    title: Board Cybersecurity Oversight Charter
+    layer: policy
+    doc_type: Charter
     revision: Rev 1
-    date_filed: 2026-02-01
-    projectwise_url: https://example.com/docs/SPEC-IAM-001
+    date_filed: 2024-03-18
+    last_reviewed: 2026-03-02
+    review_interval_days: 730
+    url: https://docs.example.com/governance/POL-005
+    restricted: true
 
-  - id: SPEC-NET-001
-    title: Firewall Rule Specification
-    layer: specification
+  # Standards
+  - id: STD-001
+    title: Encryption Standard
+    layer: standard
+    doc_type: Standard
+    revision: Rev 2
+    date_filed: 2025-09-15
+    last_reviewed: 2025-09-15
+    url: https://docs.example.com/standards/STD-001
+  - id: STD-002
+    title: Logging and Monitoring Standard
+    layer: standard
+    doc_type: Standard
     revision: Rev 1
-    date_filed: 2026-02-05
-    projectwise_url: https://example.com/docs/SPEC-NET-001
+    date_filed: 2026-05-06
+    last_reviewed: 2026-05-06
+    url: https://docs.example.com/standards/STD-002
+  - id: STD-003
+    title: Authentication and MFA Standard
+    layer: standard
+    doc_type: Standard
+    revision: Rev 1
+    date_filed: 2025-03-10
+    last_reviewed: 2025-03-10
+    url: https://docs.example.com/standards/STD-003
 
-  # Verification layer
-  - id: ART-IAM-001
-    title: IAM Configuration Verification Evidence
-    layer: verification
+  # Procedures
+  - id: PRC-001
+    title: Incident Response Plan
+    layer: procedure
+    doc_type: Plan
+    revision: Rev 4
+    date_filed: 2026-04-01
+    last_reviewed: 2026-04-01
+    url: https://docs.example.com/procedures/PRC-001
+  - id: PRC-002
+    title: Personal Data Breach Notification Procedure
+    layer: procedure
+    doc_type: Procedure
     revision: Rev 1
-    date_filed: 2026-02-15
-    projectwise_url: https://example.com/docs/ART-IAM-001
+    date_filed: 2026-02-12
+    last_reviewed: 2026-02-12
+    url: https://docs.example.com/procedures/PRC-002
+  - id: PRC-003
+    title: Vendor Security Review Procedure
+    layer: procedure
+    doc_type: Procedure
+    revision: Rev 2
+    date_filed: 2025-12-01
+    last_reviewed: 2025-12-01
+    url: https://docs.example.com/procedures/PRC-003
+  - id: PRC-004
+    title: Quarterly Access Review Procedure
+    layer: procedure
+    doc_type: Procedure
+    revision: Rev 1
+    date_filed: 2025-11-04
+    last_reviewed: 2025-11-04
+    url: https://docs.example.com/procedures/PRC-004
+  - id: PRC-005
+    title: Cyber Incident Materiality Assessment Procedure
+    layer: procedure
+    doc_type: Procedure
+    status_note: Drafting. Target filing Q4 2026.
 
-  - id: ART-CFG-001
-    title: Baseline Configuration Verification
-    layer: verification
-    revision: Rev 1
-    date_filed: 2026-02-20
-    projectwise_url: https://example.com/docs/ART-CFG-001
+  # Evidence
+  - id: EVD-001
+    title: Q2 2026 Access Review Record
+    layer: evidence
+    doc_type: Record
+    date_filed: 2026-07-08
+    url: https://docs.example.com/evidence/EVD-001
+  - id: EVD-002
+    title: 2026 Incident Response Tabletop Report
+    layer: evidence
+    doc_type: Report
+    date_filed: 2026-05-20
+    url: https://docs.example.com/evidence/EVD-002
+    restricted: true
+  - id: EVD-003
+    title: Vendor Review Log
+    layer: evidence
+    doc_type: Log
+    date_filed: 2026-08-29
+    url: https://docs.example.com/evidence/EVD-003

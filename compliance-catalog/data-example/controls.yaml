@@ -1,0 +1,70 @@
+# Shared controls: one plain-language control that satisfies requirements in
+# several regulations. Obligations point here with common_control. Each control
+# belongs to one topic.
+controls:
+  - id: access-lifecycle
+    topic: access
+    name: Create, review, and remove accounts on purpose
+    summary: >
+      Every account has an owner and a reason to exist. Accounts are approved before they are
+      created, reviewed on a schedule, and removed promptly when no longer needed.
+  - id: least-privilege
+    topic: access
+    name: Give people only the access their job needs
+    summary: >
+      People and programs get the minimum access needed for their work. Administrator rights are
+      limited to the few who need them.
+  - id: authentication
+    topic: identity
+    name: Confirm identity before granting access
+    summary: >
+      Users and systems prove who they are before getting in, using multi-factor authentication
+      wherever the risk justifies it.
+  - id: encryption
+    topic: data-protection
+    name: Encrypt data when it is stored and when it moves
+    summary: >
+      Sensitive data is encrypted on disk and across networks, and encryption keys are managed
+      so that only authorized systems can use them.
+  - id: logging
+    topic: logging
+    name: Record important activity and watch for problems
+    summary: >
+      Systems log security-relevant events, the logs are protected from tampering, and someone
+      reviews them for signs of trouble.
+  - id: incident-response
+    topic: incidents
+    name: Have an incident plan and use it
+    summary: >
+      Roles, steps, and contacts for handling an incident are written down before anything
+      happens, and the plan is practiced.
+  - id: breach-notification
+    topic: incidents
+    name: Tell regulators, investors, and affected people on time
+    summary: >
+      Some incidents must be reported within fixed deadlines. The company knows who decides,
+      who files, and how fast.
+  - id: vendor-risk
+    topic: vendors
+    name: Check suppliers before and during the relationship
+    summary: >
+      Suppliers who handle our data are reviewed before contracts are signed, contracts include
+      security terms, and the review is repeated over time.
+  - id: retention
+    topic: retention
+    name: Keep data only as long as needed
+    summary: >
+      Each type of data has a retention period, and data is deleted or anonymized when that
+      period ends or when someone has the right to have it erased.
+  - id: risk-management
+    topic: oversight
+    name: Assess and manage cybersecurity risk
+    summary: >
+      The company has a repeatable way to identify its cybersecurity risks, judge how serious
+      they are, and decide what to do about them.
+  - id: leadership
+    topic: oversight
+    name: Leadership oversees cybersecurity
+    summary: >
+      Executives and the board have defined responsibilities for cybersecurity and receive
+      regular reports on it.
