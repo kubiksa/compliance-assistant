@@ -1,0 +1,109 @@
+# Plain-language topics shown as tiles on the home page. Write these for someone
+# who has never read a regulation.
+topics:
+  - id: access
+    name: Who can access what
+    blurb: Deciding who gets an account and limiting each person to what their job needs.
+    summary: >
+      Only the right people should be able to see or change company and customer data, and only
+      as much as their job needs. This covers creating accounts, granting permissions, reviewing
+      them, and removing access when someone leaves or changes roles.
+    applies_to_you:
+      - Adding a new hire or contractor to a system
+      - Giving someone administrator rights
+      - Approving a request for access to customer data
+      - Offboarding someone or changing their role
+    related: [identity, logging]
+
+  - id: identity
+    name: Proving who someone is
+    blurb: Passwords, multi-factor authentication, and service accounts.
+    summary: >
+      Before a system grants access, it needs to be confident the person or program is who they
+      claim to be. This covers login rules, MFA, and accounts used by software rather than people.
+    applies_to_you:
+      - Setting up login for a new application
+      - Creating a service account or API key
+      - Asking for an exception to MFA
+    related: [access]
+
+  - id: data-protection
+    name: Protecting stored and transferred data
+    blurb: Encryption and other safeguards for data at rest and in transit.
+    summary: >
+      Data should be unreadable to anyone who gets hold of it without permission, whether it is
+      stored on a disk or moving across a network.
+    applies_to_you:
+      - Choosing where to store customer data
+      - Sending files to a customer or partner
+      - Setting up a new database or storage bucket
+    related: [personal-info, access]
+
+  - id: logging
+    name: Keeping activity records
+    blurb: Logging who did what, and watching for unusual activity.
+    summary: >
+      Systems should record important activity so problems can be spotted and investigated later.
+      This covers what gets logged, how long logs are kept, and who reviews them.
+    applies_to_you:
+      - Launching a new system or application
+      - Investigating something that looks wrong
+    related: [incidents]
+
+  - id: incidents
+    name: When something goes wrong
+    blurb: Responding to security incidents and telling the right people in time.
+    summary: >
+      When a security incident happens, the company needs a plan for containing it and, in some
+      cases, a legal deadline for telling regulators, investors, or the people affected.
+    applies_to_you:
+      - You notice a lost laptop, a phishing click, or unexpected access
+      - You are part of the incident response team
+      - You approve public statements or regulatory filings
+    related: [logging, personal-info]
+
+  - id: vendors
+    name: Vendors, contractors, and partners
+    blurb: What we check before a supplier touches our data, and after.
+    summary: >
+      Suppliers who handle our data or connect to our systems can create risk for us. We check
+      their security before signing and keep checking while we work with them.
+    applies_to_you:
+      - Buying a new software service
+      - Hiring a contractor who needs system access
+      - Renewing a supplier contract
+    related: [personal-info]
+
+  - id: personal-info
+    name: Personal information about people
+    blurb: Names, contact details, and other data covered by privacy laws.
+    summary: >
+      Privacy laws give people rights over data about them and put limits on what companies can
+      do with it. This covers knowing what personal data we hold and answering people's requests.
+    applies_to_you:
+      - Collecting data about customers, users, or employees
+      - Receiving a request from someone asking what data we hold about them
+    related: [data-protection, retention]
+
+  - id: retention
+    name: Keeping and deleting data
+    blurb: How long we keep data, and deleting it when it is no longer needed.
+    summary: >
+      Data should be kept only as long as it is needed and then deleted properly. Keeping data
+      forever increases the damage if it is ever exposed.
+    applies_to_you:
+      - Closing out a customer account or project
+      - Decommissioning a system
+      - Receiving a request to delete someone's data
+    related: [personal-info]
+
+  - id: oversight
+    name: Leadership and oversight
+    blurb: What executives and the board are responsible for.
+    summary: >
+      Senior leaders and the board are expected to understand the company's cybersecurity risk,
+      decide how to handle it, and be able to show they are overseeing it.
+    applies_to_you:
+      - Preparing a board or executive update on security
+      - Drafting the annual report
+    related: [incidents]

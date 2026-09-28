@@ -1,21 +1,15 @@
-# Accountable roles under the governance model. Every obligation names one
-# role that is responsible for its implementation.
-#
-# Roles are positions, not people. This keeps the catalog valid across
-# personnel changes.
-
+# Accountable roles. Use roles, not names, so the catalog does not go stale
+# when people change jobs.
 roles:
-  - id: security_officer
+  - id: ciso
     name: Chief Information Security Officer
-    iso_clause: 5.3
-    scope: Security policy, access control, and monitoring
-
-  - id: system_owner
-    name: System Owner
-    iso_clause: 5.3
-    scope: Configuration management, boundary protection, and system operations
-
-  - id: compliance_officer
-    name: Compliance Officer
-    iso_clause: 5.3
-    scope: ISMS governance and audit coordination
+    scope: Security program, policies, and standards
+  - id: dpo
+    name: Data Protection Officer
+    scope: Privacy obligations and personal data
+  - id: general_counsel
+    name: General Counsel
+    scope: Legal and regulatory disclosure
+  - id: it_ops
+    name: IT Operations Manager
+    scope: Access administration, logging, and infrastructure

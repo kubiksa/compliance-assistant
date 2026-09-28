@@ -1,108 +1,241 @@
-# Connective tissue. Each mapping links one obligation to the documents that
-# satisfy it across the four-layer model, and declares the current verification
-# status.
+# Which documents address each requirement, and how completely.
 #
-# status is one of:
-#   verified              - obligation is fully satisfied and evidence exists
-#   deviations_noted      - obligation is partially satisfied; gaps documented
-#   verification_pending  - verification cannot be completed (access blocked,
-#                           document not filed, or awaiting other work)
+# status   addressed | partially_addressed | not_addressed | not_assessed
+#          (requirements with no mapping count as not_assessed)
+# layer    optional; defaults to the document's own layer
+# rationale  required in practice for partial or not addressed; shown to readers
 
 mappings:
-  - obligation_id: nist-171-03-01-01
+  # Access
+  - obligation_id: soc2-cc6-2
+    status: addressed
     documents:
-      - document_id: POL-AC-001
-        layer: requirement
-      - document_id: DES-IAM-001
-        layer: design
-      - document_id: SPEC-IAM-001
-        layer: specification
-      - document_id: ART-IAM-001
-        layer: verification
-    status: verified
-    notes: >
-      Account management fully implemented via Entra ID with lifecycle
-      automation. Verification evidence in ART-IAM-001.
+      - document_id: POL-002
+      - document_id: PRC-004
+      - document_id: EVD-001
+    last_reviewed: 2026-07-10
+  - obligation_id: iso-a-5-18
+    status: addressed
+    documents:
+      - document_id: POL-002
+      - document_id: PRC-004
+      - document_id: EVD-001
+    last_reviewed: 2026-07-10
+  - obligation_id: csf-pr-aa-01
+    status: addressed
+    documents:
+      - document_id: POL-002
+      - document_id: STD-003
+    last_reviewed: 2026-07-10
+  - obligation_id: soc2-cc6-3
+    status: partially_addressed
+    documents:
+      - document_id: POL-002
+    rationale: The policy requires least privilege, but no procedure says how administrator access is approved or reviewed.
+    last_reviewed: 2026-02-02
+  - obligation_id: iso-a-8-2
+    status: partially_addressed
+    documents:
+      - document_id: POL-002
+    rationale: The policy requires least privilege, but no procedure says how administrator access is approved or reviewed.
+    last_reviewed: 2026-02-02
+  - obligation_id: csf-pr-aa-05
+    status: partially_addressed
+    documents:
+      - document_id: POL-002
+      - document_id: PRC-004
+    rationale: Access reviews cover standard accounts. Separation of duties is not yet defined for finance systems.
+    last_reviewed: 2026-02-02
 
-  - obligation_id: nist-171-03-01-05
+  # Identity
+  - obligation_id: soc2-cc6-1
+    status: addressed
     documents:
-      - document_id: POL-AC-001
-        layer: requirement
-      - document_id: DES-IAM-001
-        layer: design
-      - document_id: SPEC-IAM-001
-        layer: specification
-    status: deviations_noted
-    notes: >
-      PIM implementation covers privileged roles. Standard user least-privilege
-      review scheduled quarterly, last review 2026-01-15. Verification artifact
-      pending completion of the current review cycle.
+      - document_id: POL-002
+      - document_id: STD-003
+    last_reviewed: 2025-06-15
+  - obligation_id: iso-a-8-5
+    status: addressed
+    documents:
+      - document_id: STD-003
+    last_reviewed: 2025-06-15
+  - obligation_id: csf-pr-aa-03
+    status: addressed
+    documents:
+      - document_id: STD-003
+    last_reviewed: 2025-06-15
 
-  - obligation_id: nist-171-03-04-01
+  # Data protection
+  - obligation_id: iso-a-8-24
+    status: addressed
     documents:
-      - document_id: POL-CM-001
-        layer: requirement
-      - document_id: DES-CFG-001
-        layer: design
-      - document_id: ART-CFG-001
-        layer: verification
-    status: verified
-    notes: >
-      Terraform-based IaC provides declarative baseline configurations. All
-      changes tracked in Azure DevOps with mandatory pull request review.
+      - document_id: POL-001
+      - document_id: STD-001
+    last_reviewed: 2026-03-20
+  - obligation_id: csf-pr-ds-01
+    status: addressed
+    documents:
+      - document_id: STD-001
+    last_reviewed: 2026-03-20
+  - obligation_id: csf-pr-ds-02
+    status: addressed
+    documents:
+      - document_id: STD-001
+    last_reviewed: 2026-03-20
+  - obligation_id: gdpr-32-1-a
+    status: addressed
+    documents:
+      - document_id: POL-003
+      - document_id: STD-001
+    last_reviewed: 2026-03-20
+  - obligation_id: soc2-cc6-7
+    status: addressed
+    documents:
+      - document_id: STD-001
+    last_reviewed: 2026-03-20
+  - obligation_id: gdpr-5-1-f
+    status: addressed
+    documents:
+      - document_id: POL-003
+      - document_id: STD-001
+    last_reviewed: 2026-03-20
 
-  - obligation_id: nist-171-03-08-01
+  # Logging
+  - obligation_id: iso-a-8-15
+    status: partially_addressed
     documents:
-      - document_id: POL-MP-001
-        layer: requirement
-    status: verification_pending
-    notes: >
-      Policy filed. Design and implementation verification pending completion
-      of DLZ storage architecture and access to production storage accounts.
+      - document_id: STD-002
+    rationale: The standard defines what to log, but no retention period for logs has been set.
+    last_reviewed: 2026-05-06
+  - obligation_id: csf-pr-ps-04
+    status: partially_addressed
+    documents:
+      - document_id: STD-002
+    rationale: The standard defines what to log, but no retention period for logs has been set.
+    last_reviewed: 2026-05-06
 
-  - obligation_id: nist-171-03-13-01
+  # Incidents
+  - obligation_id: iso-a-5-24
+    status: addressed
     documents:
-      - document_id: DES-NET-001
-        layer: design
-      - document_id: SPEC-NET-001
-        layer: specification
-    status: deviations_noted
-    notes: >
-      Boundary protection design and firewall rule specification filed.
-      Requirement-layer policy not yet created. Deviation logged for policy
-      backfill in next quarterly cycle.
+      - document_id: PRC-001
+      - document_id: EVD-002
+    last_reviewed: 2026-05-20
+  - obligation_id: csf-rs-ma-01
+    status: addressed
+    documents:
+      - document_id: PRC-001
+      - document_id: EVD-002
+    last_reviewed: 2026-05-20
+  - obligation_id: soc2-cc7-4
+    status: addressed
+    documents:
+      - document_id: PRC-001
+    last_reviewed: 2026-05-20
+  - obligation_id: gdpr-33-1
+    status: addressed
+    documents:
+      - document_id: PRC-001
+      - document_id: PRC-002
+    last_reviewed: 2026-02-12
+  - obligation_id: gdpr-34-1
+    status: partially_addressed
+    documents:
+      - document_id: PRC-002
+    rationale: The procedure covers notifying the regulator. Who approves the message to affected people, and how it is sent, is not defined.
+    last_reviewed: 2026-02-12
+  - obligation_id: sec-8k-105
+    status: not_addressed
+    rationale: No documented process for deciding and filing SEC incident disclosures. PRC-005 is being drafted to cover it.
+    last_reviewed: 2026-03-10
+  - obligation_id: sec-materiality
+    status: not_addressed
+    rationale: No documented process for deciding and filing SEC incident disclosures. PRC-005 is being drafted to cover it.
+    last_reviewed: 2026-03-10
 
-  - obligation_id: cmmc-l2-ac-l2-3-1-1
+  # Vendors
+  - obligation_id: iso-a-5-19
+    status: addressed
     documents:
-      - document_id: POL-AC-001
-        layer: requirement
-      - document_id: DES-IAM-001
-        layer: design
-      - document_id: ART-IAM-001
-        layer: verification
-    status: verified
-    notes: >
-      Directly satisfied by the same evidence chain as NIST SP 800-171
-      control 03.01.01. Cross-mapped.
+      - document_id: PRC-003
+      - document_id: EVD-003
+    last_reviewed: 2026-08-29
+  - obligation_id: soc2-cc9-2
+    status: addressed
+    documents:
+      - document_id: PRC-003
+      - document_id: EVD-003
+    last_reviewed: 2026-08-29
+  - obligation_id: csf-gv-sc-07
+    status: partially_addressed
+    documents:
+      - document_id: PRC-003
+    rationale: Suppliers are reviewed before signing, but the procedure does not require repeat reviews during the contract.
+    last_reviewed: 2026-08-29
+  - obligation_id: gdpr-28-1
+    status: addressed
+    documents:
+      - document_id: POL-003
+      - document_id: PRC-003
+    last_reviewed: 2026-08-29
 
-  - obligation_id: iso-a-8-9
+  # Personal information and retention
+  - obligation_id: gdpr-15
+    status: partially_addressed
     documents:
-      - document_id: POL-CM-001
-        layer: requirement
-      - document_id: DES-CFG-001
-        layer: design
-      - document_id: ART-CFG-001
-        layer: verification
-    status: verified
-    notes: >
-      Cross-mapped with NIST SP 800-171 control 03.04.01. Same evidence chain.
+      - document_id: POL-003
+    rationale: The policy commits to answering access requests. There is no procedure for verifying identity or meeting the one-month deadline.
+    last_reviewed: 2026-02-12
+  - obligation_id: gdpr-30
+    status: not_addressed
+    rationale: No record of processing activities exists yet.
+    last_reviewed: 2026-02-12
+  - obligation_id: gdpr-5-1-e
+    status: partially_addressed
+    documents:
+      - document_id: POL-004
+    rationale: Retention periods are set for customer data but not for employee or marketing data.
+    last_reviewed: 2025-04-30
+  - obligation_id: iso-a-8-10
+    status: addressed
+    documents:
+      - document_id: POL-004
+    last_reviewed: 2025-04-30
 
-  - obligation_id: iso-a-5-15
+  # Oversight
+  - obligation_id: sec-106-b
+    status: addressed
     documents:
-      - document_id: POL-AC-001
-        layer: requirement
-      - document_id: DES-IAM-001
-        layer: design
-    status: verified
-    notes: >
-      Cross-mapped with NIST SP 800-171 controls 03.01.01 and 03.01.05.
+      - document_id: POL-001
+    last_reviewed: 2026-01-20
+  - obligation_id: iso-6-1-2
+    status: addressed
+    documents:
+      - document_id: POL-001
+    last_reviewed: 2026-01-20
+  - obligation_id: soc2-cc3-2
+    status: addressed
+    documents:
+      - document_id: POL-001
+    last_reviewed: 2026-01-20
+  - obligation_id: sec-106-c
+    status: addressed
+    documents:
+      - document_id: POL-005
+    last_reviewed: 2026-03-02
+  - obligation_id: csf-gv-rr-01
+    status: addressed
+    documents:
+      - document_id: POL-005
+    last_reviewed: 2026-03-02
+  - obligation_id: iso-5-1
+    status: addressed
+    documents:
+      - document_id: POL-001
+      - document_id: POL-005
+    last_reviewed: 2026-03-02
+  - obligation_id: soc2-cc1-2
+    status: addressed
+    documents:
+      - document_id: POL-005
+    last_reviewed: 2026-03-02

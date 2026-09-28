@@ -1,29 +1,183 @@
-# Regulations, standards, or frameworks the catalog tracks.
+# Regulations, standards, and frameworks the catalog tracks.
 #
-# obligation_type is one of:
-#   compliant_with  - for mandatory regulations (laws, statutes)
-#   certified_to    - for voluntary standards (ISO, SOC 2, CMMC)
-#   aligned_with    - for frameworks (NIST CSF)
-#   implements      - for guidance documents (NIST SP 800 series)
+# source_type      what kind of source it is: mandate | guidance | standard | market
+# obligation_type  the organization's relationship to it:
+#                    compliant_with   mandatory law or regulation
+#                    certified_to     voluntary standard with certification or attestation
+#                    aligned_with     framework the organization follows
+#                    implements       technical guidance adopted as a baseline
+#                    supports_client  listed for context only; no coverage is tracked
+# applies_if       "always", or ids from catalog.yaml applicability
+# total_obligations  how many requirements are in scope, even if not all are listed yet
+# key_dates        date (YYYY-MM-DD), optional date_text to display instead,
+#                  kind: internal for company milestones, pending: true for undated future events
 
 regulations:
-  - id: nist-800-171-r3
-    name: NIST SP 800-171 Rev 3
-    full_title: Protecting Controlled Unclassified Information in Nonfederal Systems and Organizations
-    jurisdiction: us_federal
-    obligation_type: implements
-    reg_document: REG-EXAMPLE-001
-
-  - id: cmmc-l2
-    name: CMMC Level 2
-    full_title: Cybersecurity Maturity Model Certification, Level 2
-    jurisdiction: us_federal
+  - id: soc2
+    name: SOC 2
+    full_title: AICPA Trust Services Criteria (SOC 2 examination)
+    reg_document: REF-SOC2
+    source_type: standard
     obligation_type: certified_to
-    reg_document: REG-EXAMPLE-002
+    category: security_framework
+    jurisdiction: us
+    scope: program
+    applies_if: [customer_assurance]
+    accountable_role: ciso
+    condition: When customers require it
+    version_tracked: 2017 Trust Services Criteria with 2022 revised points of focus
+    wording_note: Summary. The official criteria text is published by the AICPA and not reproduced here.
+    source_url: https://www.aicpa-cima.com/
+    total_obligations: 33
+    summary: >
+      An independent auditor's report on how well a company protects the systems and data it
+      handles for customers. It is not a law, but many customers will not sign a contract without one.
+    applies_when:
+      - Customers or prospects ask for a SOC 2 report during security review
+      - We store or process data on behalf of customers
+    does_not_apply:
+      - No law requires SOC 2. It applies only when customers or contracts ask for it.
+      - This catalog tracks the Security criteria (the 33 common criteria) only.
+    date_display: Criteria current since 2017
+    key_dates:
+      - date: 2017-01-01
+        date_text: "2017"
+        label: Current Trust Services Criteria issued
+      - date: 2022-01-01
+        date_text: "2022"
+        label: Revised points of focus published
+      - date: 2027-03-31
+        label: Type II observation period ends
+        detail: Internal milestone. The auditor tests controls over this period.
+        kind: internal
+    last_reviewed: 2026-06-15
 
-  - id: iso27001-2022
-    name: ISO 27001:2022
-    full_title: Information Security Management Systems - Requirements
+  - id: iso27001
+    name: ISO/IEC 27001:2022
+    full_title: Information security management systems, requirements
+    reg_document: REF-ISO27001
+    source_type: standard
+    obligation_type: certified_to
+    category: security_framework
     jurisdiction: international
-    obligation_type: certified_to
-    reg_document: REG-EXAMPLE-003
+    scope: program
+    applies_if: [certification]
+    accountable_role: ciso
+    condition: If certifying
+    version_tracked: ISO/IEC 27001:2022
+    wording_note: Summary. The official text is licensed by ISO and not reproduced here.
+    source_url: https://www.iso.org/standard/27001
+    total_obligations: 93
+    summary: >
+      The international standard for running an information security program. Certification
+      means an accredited auditor has confirmed the program meets the standard.
+    applies_when:
+      - We want certification to satisfy international customers or tenders
+      - A contract requires ISO 27001 certification
+    does_not_apply:
+      - ISO 27001 is voluntary. Without certification plans, it is still useful as a reference but nothing is audited.
+      - This catalog counts the 93 Annex A controls. The management clauses (4 to 10) are tracked separately.
+    key_dates:
+      - date: 2022-10-25
+        label: 2022 edition published
+      - date: 2025-10-31
+        label: Certificates to the 2013 edition expire
+        detail: Organizations certified to the old edition had to transition by this date.
+      - date: 2027-02-15
+        label: Certification audit, stage 2
+        detail: Internal milestone.
+        kind: internal
+    last_reviewed: 2026-06-15
+
+  - id: nist-csf
+    name: NIST Cybersecurity Framework 2.0
+    full_title: The NIST Cybersecurity Framework (CSF) 2.0
+    reg_document: REF-CSF
+    source_type: guidance
+    obligation_type: aligned_with
+    category: security_framework
+    jurisdiction: us
+    scope: program
+    applies_if: always
+    accountable_role: ciso
+    version_tracked: CSF 2.0 (February 2024)
+    source_url: https://www.nist.gov/cyberframework
+    total_obligations: 106
+    summary: >
+      A free, widely used framework from the US government that organizes security work into
+      six functions: Govern, Identify, Protect, Detect, Respond, and Recover. It is voluntary,
+      and many companies use it as their baseline.
+    applies_when:
+      - We use the CSF as the common language for describing our security program
+    does_not_apply:
+      - The CSF is voluntary for private companies. Nothing is certified against it.
+    key_dates:
+      - date: 2024-02-26
+        label: CSF 2.0 published
+    last_reviewed: 2025-08-01
+
+  - id: gdpr
+    name: GDPR
+    full_title: General Data Protection Regulation (EU) 2016/679
+    reg_document: REF-GDPR
+    source_type: mandate
+    obligation_type: compliant_with
+    category: privacy
+    jurisdiction: eu
+    scope: data
+    applies_if: [eu_personal_data]
+    accountable_role: dpo
+    condition: EU personal data
+    version_tracked: Regulation (EU) 2016/679 as in force
+    source_url: https://eur-lex.europa.eu/eli/reg/2016/679/oj
+    summary: >
+      The EU's data protection law. It sets rules for collecting, using, keeping, and protecting
+      personal data about people in the EU, and applies to companies outside the EU that serve them.
+    applies_when:
+      - We offer goods or services to people in the EU, including free services
+      - We monitor the behavior of people in the EU, for example through website analytics
+      - We have an office or employees in the EU
+    does_not_apply:
+      - Data that is truly anonymized and can no longer identify anyone
+      - Purely personal or household activity
+    key_dates:
+      - date: 2016-04-27
+        label: Regulation adopted
+      - date: 2018-05-25
+        label: Regulation applies
+    last_reviewed: 2026-03-10
+
+  - id: sec-cyber
+    name: SEC cybersecurity disclosure rule
+    full_title: Cybersecurity Risk Management, Strategy, Governance, and Incident Disclosure
+    reg_document: REF-SEC
+    source_type: mandate
+    obligation_type: compliant_with
+    category: securities
+    jurisdiction: us
+    scope: both
+    applies_if: [us_public]
+    accountable_role: general_counsel
+    condition: Public companies
+    wording_note: Summary of the rule's requirements. See the official source for the exact text.
+    source_url: https://www.sec.gov/
+    summary: >
+      Public companies must report a material cybersecurity incident within four business days
+      of deciding it is material, and describe how they manage cyber risk and how the board
+      oversees it in every annual report.
+    applies_when:
+      - Our shares are registered with the SEC
+    does_not_apply:
+      - Private companies
+    key_dates:
+      - date: 2023-07-26
+        label: Rule adopted
+      - date: 2023-09-05
+        label: Rule effective
+      - date: 2023-12-15
+        label: Annual report disclosures begin
+        detail: For fiscal years ending on or after this date.
+      - date: 2023-12-18
+        label: Incident reporting on Form 8-K begins
+        detail: Smaller reporting companies began June 15, 2024.
+    last_reviewed: 2026-03-10
